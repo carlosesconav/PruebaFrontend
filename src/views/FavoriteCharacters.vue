@@ -46,28 +46,37 @@ export default {
         axios.get(url)
             .then(data => {
 
-                this.fav = data.data
+                this.fav = data;
+                console.log(this.fav.data)
                 const data1 = [];
-                for (const iterator of this.fav) {
-                    console.log(iterator.ref_api)
-                    let d = iterator.ref_api
-                    let jsonInt = parseInt(JSON.stringify(d));
+                for (const iterator in this.fav.data) {
 
-                    data1.push(jsonInt)
+                    console.log(iterator)
+                    let d = iterator
+                    // let jsonInt = parseInt(JSON.stringify(d));
+                    data1.push(d)
 
                 }
+
+
                 console.log(data1)
 
-                axios.get(`https://rickandmortyapi.com/api/character/${data1},`)
-                        .then(data => {
-                            this.character = data.data;
-                        })
-                        .catch(error => console.log(error))
+                const data2 = [];
 
+                for (const i of data1) {
 
+                    let x = this.fav.data[i].ref_api
+                    data2.push(x)
 
+                }
 
+                console.log(data2)
 
+                axios.get(`https://rickandmortyapi.com/api/character/${data2},`)
+                    .then(data => {
+                        this.character = data.data;
+                    })
+                    .catch(error => console.log(error))
 
             })
             .catch(error => console.log(error))
