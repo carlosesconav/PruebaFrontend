@@ -15,7 +15,6 @@ Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios)
 Vue.use(Vuex);
 
-
 new Vue({
   router,
   render: h => h(App)

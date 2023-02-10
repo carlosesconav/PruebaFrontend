@@ -3,14 +3,12 @@
 
         <form action="" class="form-horizontal">
             <div class="form-group left">
-
                 <label for="" class="control-label col-sm-2">Nombre: </label>
                 <div class="col-sm-10">
 
                     <input type="text" class="form-control" name="name" id="name" v-model="form.name">
 
                 </div>
-
             </div>
             <div class="form-group left">
 
@@ -20,7 +18,6 @@
                     <input type="email" class="form-control" name="email" id="email" v-model="form.email">
 
                 </div>
-
             </div>
             <div class="form-group left">
 
@@ -31,11 +28,10 @@
 
                 </div>
             </div>
-
         </form>
         <div class="form-group left">
                 <button class="btn btn-success" v-on:click="register()"> Registrar</button>
-            </div>
+        </div>
 
     </div>
 </template>
@@ -45,7 +41,7 @@
 
 export default {
     name: 'RegisterView',
-    data: function () {
+    data: function() {
 
         return {
 
@@ -73,12 +69,9 @@ export default {
                    }
                 })
                 .catch(error => console.log(error))
-          
         }
-
     }
 }
-
 </script>
 
 <style scoped>

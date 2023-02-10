@@ -9,7 +9,6 @@
                     <h2> {{ characters.name }} </h2>
                     <h6> {{ characters.gender }}</h6>
                     <button class="btn text-light" v-on:click="info(characters.id)"> Info del personaje </button>
-
                 </div>
             </div>
         </div>
@@ -17,8 +16,9 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import axios from 'axios'
+import HeaderComponent from '@/components/HeaderComponent.vue';
+import axios from 'axios';
+
 export default {
     name: 'FavoriteCharacters',
     data() {
@@ -32,16 +32,12 @@ export default {
     components: {
         HeaderComponent
     }, methods: {
-
         info(id) {
             this.$router.push('/info/' + id)
         },
-
     },
     mounted: function () {
         const url = 'http://127.0.0.1:8000/api/favorites/' + localStorage.getItem("id");
-
-        console.log(localStorage.getItem("id"))
 
         axios.get(url)
             .then(data => {
@@ -51,36 +47,22 @@ export default {
                 const data1 = [];
                 for (const iterator in this.fav.data) {
 
-                    console.log(iterator)
-                    let d = iterator
-                    // let jsonInt = parseInt(JSON.stringify(d));
-                    data1.push(d)
+                    let obj1 = iterator
+                    data1.push(obj1)
 
                 }
-
-
-                console.log(data1)
-
                 const data2 = [];
-
                 for (const i of data1) {
 
-                    let x = this.fav.data[i].ref_api
-                    data2.push(x)
+                    let favorites = this.fav.data[i].ref_api
+                    data2.push(favorites)
 
                 }
-
-                console.log(data2)
-
                 axios.get(`https://rickandmortyapi.com/api/character/${data2},`)
-                    .then(data => {
-                        this.character = data.data;
-                    })
+                    .then(data => { this.character = data.data; })
                     .catch(error => console.log(error))
-
             })
             .catch(error => console.log(error))
-
     }
 }
 </script>

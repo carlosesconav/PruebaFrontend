@@ -9,7 +9,6 @@
                 <h6> {{ characters.gender }} </h6>
                 <button class="btn text-light" v-on:click="info(characters.id)"> Info del personaje </button>
                 <button class="btn text-light" v-on:click="favorite(characters.id)"> Marcar favorito </button>
-
             </div>
         </div>
     </div>
@@ -22,18 +21,14 @@ import axios from 'axios';
 export default {
     name: 'DashBoard',
     data() {
-
         return {
-
             character: null,
             page: 1,
             form: {
                 "id_user": "",
                 "ref_api": ""
             }
-
         }
-
     },
     components: {
         HeaderComponent
@@ -43,18 +38,16 @@ export default {
         info(id) {
             this.$router.push('/info/' + id)
         },
-        favorite(chId){
-            
-        this.form.id_user = localStorage.getItem("id")
-        this.form.ref_api = chId
+        favorite(chId) {
 
-        axios.post('http://127.0.0.1:8000/api/Savefavorites',this.form)
-        .then(data => {
+            this.form.id_user = localStorage.getItem("id")
+            this.form.ref_api = chId
 
-            console.log(data.data)
-   
-        })
-        .catch(error=>console.log(error))
+            axios.post('http://127.0.0.1:8000/api/Savefavorites', this.form)
+                .then(data => {
+                    console.log(data.data)
+                })
+                .catch(error => console.log(error))
         }
 
     },
@@ -66,7 +59,6 @@ export default {
                 this.character = data.data.results;
             })
             .catch(error => console.log(error))
-
     }
 }
 </script >

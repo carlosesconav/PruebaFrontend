@@ -26,7 +26,6 @@
                         </tr>
                     </tbody>
                 </table>
-
         </div>
 
         </div>
@@ -34,7 +33,7 @@
 </template>
 
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue';
 import axios from 'axios';
 
 export default {
@@ -43,29 +42,23 @@ export default {
    components:{
     HeaderComponent
    },
-   data:function()
-   {
+   data:function(){
     return{
         id:null,
         info: null
     }
    },
-   mounted: function()
-   {
+   mounted: function(){
     this.id = this.$route.params.id;
     const url='https://rickandmortyapi.com/api/character/'+this.id;
+
     axios.get(url)
     .then(data =>{
-        
         this.info = data.data;
-
     })
     .catch(error=>console.log(error))
-
    }
-
 }
-
 </script >
 
 <style scoped>

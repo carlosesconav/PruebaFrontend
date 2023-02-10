@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
 import DashBoard from '../views/Dashboard.vue'
 import InfoCharacter from '../views/InfoCharacter.vue'
 import PerfilUser from '../views/PerfilUser.vue'
@@ -12,8 +12,8 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'LoginView',
+    component: LoginView
   },
   {
     path: '/dashboard',

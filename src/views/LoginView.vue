@@ -5,14 +5,15 @@
       <h1 class="text-center">Bienvenido usuario</h1>
 
       <form v-on:submit.prevent="login">
+
         <div class="form-group">
           <label class="form-label" for="email">Ingresa tu correo electronico: </label>
           <input class="form-control" type="email" id="email" name="email" v-model="email" required
             placeholder="Correo electronico">
 
         </div>
-
         <div class="form-group">
+
           <label class="form-label" for="password">Ingresa tu contraseña: </label>
           <input class="form-control" type="password" id="password" name="password" v-model="password" required
             placeholder="Contraseña">
@@ -23,8 +24,8 @@
       <div>
 
         <div class="alert alert-danger" role="alert" v-if="error"> Credenciales invalidas </div>
-
         <button class="btn" v-on:click="register()"> Registrarse </button>
+
       </div>
     </div>
   </div>
@@ -34,11 +35,11 @@
 import axios from 'axios';
 
 export default {
-  name: 'HomeView',
+  name: 'LoginView',
   components: {
 
   },
-  data: function () {
+  data: function() {
     return {
 
       email: "",
@@ -49,7 +50,8 @@ export default {
     }
   },
   methods: {
-    login() {
+    
+    login(){
       let data = {
         "email": this.email,
         "password": this.password
